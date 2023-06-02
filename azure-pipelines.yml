@@ -16,9 +16,6 @@ steps:
   displayName: Install CAP Build Tools and CAP Runtime Env
 
 - script: |
-    cd $(Agent.BuildDirectory)/s
-    ls
-    git branch
     mbt build -p=cf -s=$(Agent.BuildDirectory)/s/app1
   displayName: MTA Build
 
