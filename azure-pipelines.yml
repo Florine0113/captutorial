@@ -18,7 +18,7 @@ steps:
 - script: |
     cd $(Agent.BuildDirectory)/s
     ls
-    git switch 12_hana
+    git branch
     mbt build -p=cf -s=$(Agent.BuildDirectory)/s/app1
   displayName: MTA Build
 
