@@ -4,7 +4,9 @@
 # https://aka.ms/yaml
 
 trigger:
-- 12_hana
+  branches:
+    include:
+      - 1_data_model
 
 pool:
   vmImage: ubuntu-latest
