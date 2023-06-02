@@ -6,8 +6,14 @@
 trigger:
   branches:
     include:
-      - 1_data_model
+      - 12_hana
 
+resources:
+  pipelines:
+    - pipeline: mainPipeline
+      source: main-pipeline   # 指定要触发的另一个分支的 Pipeline 名称
+      branch: 1_data_model
+    
 pool:
   vmImage: ubuntu-latest
 
@@ -18,7 +24,7 @@ steps:
   displayName: Install CAP Build Tools and CAP Runtime Env
 
 - script: mbt build -p=cf -s=$(Agent.BuildDirectory)/s/app1
-  displayName: MTA Buil
+  displayName: MTA Build
 
 - script: ls $(Agent.BuildDirectory)/s/app1/mta_archives
   displayName: validate
