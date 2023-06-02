@@ -13,12 +13,10 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'npm install -g mbt @sap/cds-dk'
-  displayName: 'Install CAP Build Tools and CAP Runtime Env'
+  displayName: Install CAP Build Tools and CAP Runtime Env
 
-- script: |
-    ls
-    mbt build -p=cf -s=$(Agent.BuildDirectory)/s/app1
-  displayName: 'MTA Build'
+- script: mbt build -p=cf -s=$(Agent.BuildDirectory)/s/app1
+  displayName: MTA Build
 
 - script: ls $(Agent.BuildDirectory)/s/app1/mta_archives
   displayName: validate
