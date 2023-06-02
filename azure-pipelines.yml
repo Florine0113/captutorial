@@ -10,8 +10,8 @@ trigger:
 
 resources:
   pipelines:
-    - pipeline: Florine0113.captutorial (1)
-      source: Florine0113.captutorial (1)
+    - pipeline: captutorial
+      source: captutorial
       branch: 1_data_model
     
 pool:
