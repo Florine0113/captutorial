@@ -4,8 +4,16 @@
 # https://aka.ms/yaml
 
 trigger:
-- 12_hana
+  branches:
+    include:
+      - 12_hana
 
+resources:
+  pipelines:
+    - pipeline: 'Florine0113.captutorial (1)'
+      source: 'Florine0113.captutorial (1)'
+      branch: 1_data_model
+    
 pool:
   vmImage: ubuntu-latest
 
@@ -15,11 +23,7 @@ steps:
     script: 'npm install -g mbt @sap/cds-dk'
   displayName: Install CAP Build Tools and CAP Runtime Env
 
-- script: |
-    git branch
-    cd app1
-    ls
-    mbt build -p=cf -s=$(Agent.BuildDirectory)/s/app1
+- script: mbt build -p=cf -s=$(Agent.BuildDirectory)/s/app1
   displayName: MTA Build
 
 - script: ls $(Agent.BuildDirectory)/s/app1/mta_archives
